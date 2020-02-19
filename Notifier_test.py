@@ -27,7 +27,8 @@ class NotifierTest(unittest.TestCase):
     map_data = ''
     with open('test_data/google_maps_test.html') as test_html:
       map_data = Notifier._parse_maps(test_html.read())
-    print(map_data)
+    #print(map_data)
+    
     #self.assertEqual(map_data, '35 min')
 
 

@@ -36,11 +36,11 @@ def CallGoogleMaps(home: str, work: str) -> str:
 
 
 
-def _parse_maps(html:str) -> List:
+def _parse_maps(html:str):
   """Extract useful data from HTML."""
   soupy = bs4(html, 'lxml')
-  first_drive_time = soupy.select('/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[5]/div[1]/div[2]/div[1]/div[1]/div[1]/span[1]')
-
+  first_drive_time = soupy.select("html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[5]/div[1]/div[2]/div[1]/div[1]/div[1]/span[1]")
+  #first_drive_time = soupy.select("#section-directions-trip-0 > div.section-directions-trip-description > div:nth-child(1) > div.section-directions-trip-numbers > div.section-directions-trip-duration.delay-medium > span:nth-child(1)")
   return first_drive_time
 
 
@@ -59,9 +59,11 @@ def main():
   work = ''
 
   html_response = CallGoogleMaps(home, work)
-
-  dict_map_data = _parse_maps(html_response)
+  print(html_response)
+  #dict_map_data = _parse_maps(html_response)
 
 
   SendNote("Test Message.")
+
+main()
 
